@@ -1,5 +1,4 @@
 import 'package:flutter/material.dart';
-import 'package:great_places/screens/add_place_screen.dart';
 
 import 'package:provider/provider.dart';
 
