@@ -27,6 +27,11 @@ class _ImageInputState extends State<ImageInput> {
 
     );
 
+
+
+    if(imageFile==null){
+      return;
+    }
     setState(() {
       _storedImage=imageFile;
     });
