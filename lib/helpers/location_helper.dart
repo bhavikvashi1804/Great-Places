@@ -7,6 +7,7 @@ class LocationHelper {
     
     String url='https://image.maps.ls.hereapi.com/mia/1.6/mapview?apiKey=$HERE_API_KEY&c=$latitude,$longitude';
     print(url);
-    return url;
+    String url1='https://image.maps.ls.hereapi.com/mia/1.6/mapview?c=$latitude,$longitude&z=12&w=500&h=300&f=1&apiKey=$HERE_API_KEY';
+    return url1;
   }
 } 
