@@ -16,7 +16,7 @@ class DBHelper{
       //this is used to initialize database
       onCreate: (db,version){
 
-        return db.execute('CREATE TABLE user_places(id TEXT PRIMARY KEY,title TEXT,image TEXT)');
+        return db.execute('CREATE TABLE user_places(id TEXT PRIMARY KEY,title TEXT,image TEXT,loc_lati REAL,loc_long REAL,address TEXT)');
       },
       version: 1,
     );

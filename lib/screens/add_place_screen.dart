@@ -5,6 +5,8 @@ import 'package:provider/provider.dart';
 import '../widgets/image_input.dart';
 import '../provider/great_places.dart';
 import '../widgets/location_input.dart';
+import '../models/place.dart';
+import '../helpers/location_helper.dart';
 
 
 class AddPlaceScreen extends StatefulWidget {
@@ -25,6 +27,20 @@ class _AddPlaceScreenState extends State<AddPlaceScreen> {
     _pickedImage=pickedImage;
   }
 
+ 
+
+  PlaceLocation p1;
+  Future<void> _selectedPlace(double lat,double long,String address) async{
+    String x= await LocationHelper.getLocationName(lat, long);
+    print(x);
+    p1=PlaceLocation(
+      latitude: lat, 
+      longitude: long,
+      address: x,
+    );  
+  
+  }
+
 
   void _savePlace(){
 
@@ -34,7 +50,13 @@ class _AddPlaceScreenState extends State<AddPlaceScreen> {
       Provider.of<GreatPlaces>(context,listen: false).addPlace(
         _titleController.text, 
         _pickedImage,
+        p1,
       );
+
+      //print(p1.address);
+      //print(p1.latitude);
+      //print(p1.longitude);
+      //checked here data is coming
       Navigator.of(context).pop();
     }
   }
@@ -69,7 +91,8 @@ class _AddPlaceScreenState extends State<AddPlaceScreen> {
                     SizedBox(
                       height: 10,
                     ),
-                    LocationInput(),
+                    
+                    LocationInput(_selectedPlace),
                     
                   ],
                 ),

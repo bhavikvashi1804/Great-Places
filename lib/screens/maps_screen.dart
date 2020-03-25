@@ -9,9 +9,9 @@ class MapScreen extends StatefulWidget {
 
   static const routeName='/map-screen';
 
-  final Function setImageUrl;
+  final Function setLocationInfo;
 
-  MapScreen(this.setImageUrl);
+  MapScreen(this.setLocationInfo);
 
   @override
   _MapScreenState createState() => _MapScreenState();
@@ -21,6 +21,8 @@ class _MapScreenState extends State<MapScreen> {
   
 
   String _previewImageUrl;
+  double lati;
+  double long;
 
   final searchTextController=TextEditingController();
   
@@ -41,13 +43,14 @@ class _MapScreenState extends State<MapScreen> {
     
     var lat=latLon['Latitude'];
     var lon=latLon['Longitude'];
-    print(lat);
-    print(lon);
+   
 
     final staticMapImageUrl= LocationHelper.generateLocationPreviewImage(latitude: lat,longitude: lon);
 
     setState(() {
       _previewImageUrl=staticMapImageUrl;
+      lati=lat;
+      long=lon;
     });
 
 
@@ -122,7 +125,7 @@ class _MapScreenState extends State<MapScreen> {
                 label: Text('Select this'),
                 icon: Icon(Icons.done),
                 onPressed: (){
-                  widget.setImageUrl(_previewImageUrl);
+                  widget.setLocationInfo(lati,long,_previewImageUrl);
                   Navigator.of(context).pop();
                 },
               ),
