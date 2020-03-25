@@ -8,6 +8,12 @@ class LocationHelper {
     return url1;
   }
 
+
+   static String generateLocationImage({double latitude, double longitude,}) {
+    String url1='https://image.maps.ls.hereapi.com/mia/1.6/mapview?c=$latitude,$longitude&z=12&w=500&h=300&f=1&apiKey=$HERE_API_KEY';
+    return url1;
+  }
+
   static Future<String> getLocationName(double lati,double long)async{
     var  response= await HereMaps(apiKey: HERE_API_KEY).
     reverseGeoCode(lat: lati, lon: long);
