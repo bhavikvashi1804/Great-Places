@@ -60,4 +60,9 @@ class GreatPlaces with ChangeNotifier{
     notifyListeners();
   }
 
+
+  Place findById(String id){
+    return _items.firstWhere((element) => element.id==id);
+  }
+
 }
