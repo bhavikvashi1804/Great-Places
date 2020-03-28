@@ -1,6 +1,8 @@
 import 'package:here_maps_webservice/here_maps_webservice.dart';
+import 'package:flutter_config/flutter_config.dart';
 
-const HERE_API_KEY='HYeyw8jHy0KxEuySBUjmaPNOfJs9ImQktb3_9XA6Eyg';
+
+String HERE_API_KEY=FlutterConfig.get('HERE_API_KEY');
 
 class LocationHelper {
   static String generateLocationPreviewImage({double latitude, double longitude,}) {
